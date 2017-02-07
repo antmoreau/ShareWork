@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170206183039) do
+ActiveRecord::Schema.define(version: 20170207085401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,12 +42,33 @@ ActiveRecord::Schema.define(version: 20170206183039) do
     t.index ["subcategory_id"], name: "index_documents_on_subcategory_id", using: :btree
   end
 
+  create_table "experts", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.string   "work_for"
+    t.string   "function",   null: false
+    t.integer  "company_id", null: false
+    t.string   "email"
+    t.string   "tel"
+    t.string   "linkedin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_experts_on_company_id", using: :btree
+  end
+
   create_table "subcategories", force: :cascade do |t|
     t.string   "name",        null: false
     t.integer  "category_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["category_id"], name: "index_subcategories_on_category_id", using: :btree
+  end
+
+  create_table "tools", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.float    "price"
+    t.string   "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

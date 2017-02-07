@@ -12,6 +12,4 @@ class CreateExperts < ActiveRecord::Migration[5.0]
       t.timestamps
     end
   end
-
-  add_foreign_key :experts, :companies, on_delete: :cascade
 end
