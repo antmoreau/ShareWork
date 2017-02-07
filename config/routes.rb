@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tools
+  resources :experts
   resources :categories
   resources :subcategories
   resources :documents
